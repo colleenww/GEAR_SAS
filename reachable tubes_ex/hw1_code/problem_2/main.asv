@@ -14,7 +14,7 @@ g = createGrid(grid_min, grid_max, N, pdDims)
 % which the value function is computed. 
 failure_center = [0, 0];
 
-data0 = shapeSphere(g, failure_center, failure_radius);
+data0 = shapeSphere(g, failure_center, failure_radius)
 
 %% time vector
 t0 = 0;
