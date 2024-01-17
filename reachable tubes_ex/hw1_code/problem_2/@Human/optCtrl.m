@@ -19,7 +19,7 @@ l = sqrt(px_derivative^2 + py_derivative^2) - 0.5;
 if strcmp(uMode, 'max')
   uOpt = atan2(deriv{1}, deriv{2}); % Compute the optimal control for max case
 elseif strcmp(uMode, 'min')
-%  uOpt = ; % Compute the optimal control for min case
+  uOpt = atan2(deriv{1}, deriv{2}); % Compute the optimal control for min case
 else
   error('Unknown uMode!')
 end

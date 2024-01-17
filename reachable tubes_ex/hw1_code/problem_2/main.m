@@ -29,7 +29,7 @@ speed = 1;
 thetaMax = pi;
 
 % is the human control trying to min or max value function?
-uMode = 'max';
+uMode = 'min';
 
 %% Pack problem parameters
 
