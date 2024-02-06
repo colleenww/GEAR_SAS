@@ -91,8 +91,6 @@ HJIextraArgs.visualize.xTitle = 'x';
 HJIextraArgs.visualize.yTitle = 'y';
 HJIextraArgs.visualize.zTitle = 'V';
 
-HJIextraArgs.makeVideo = 1;
-
 %[data, tau, extraOuts] = ...
 % HJIPDE_solve(data0, tau, schemeData, minWith, extraArgs)
 minWith = 'minVOverTime';
@@ -161,30 +159,5 @@ end
 % title('Loss Function Visualization');
 % xlabel('x1');
 % ylabel('x2');
-
-% Set the initial state
-% xinit = [0, 0.5, 0];
-% 
-% % Check if the initial state is in the BRS/BRT
-% value = eval_u(g, data(:,:,:,end), xinit);
-% 
-% if value <= 0
-%     % Set initial state of the Dubins car
-%     dCar.x = xinit;
-% 
-%     % Set trajectory plotting options
-%     TrajextraArgs.uMode = uMode;
-%     TrajextraArgs.dMode = 'max';
-%     TrajextraArgs.visualize = true;
-%     TrajextraArgs.fig_num = 3; % Adjust figure number
-% 
-%     % Flip data time points so we start from the beginning of time
-%     dataTraj = flip(data, 4);
-% 
-%     % Compute optimal trajectory
-%     [traj, ~] = computeOptTraj(g, dataTraj, tau2, dCar, TrajextraArgs);
-% else
-%     error('Initial state is not in the BRS/BRT!');
-% end
 
 end
