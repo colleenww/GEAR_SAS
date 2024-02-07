@@ -1,5 +1,4 @@
 function assignment_1()
-
 % 3. Run Backward Reachable Tube (BRT) with a goal, then optimal trajectory
 %     uMode = 'min' <-- goal
 %     minWith = 'minVOverTime' <-- Tube (not set)
@@ -19,8 +18,7 @@ g = createGrid(grid_min, grid_max, N, pdDims);
 
 %% target set
 R = 2; % radius 2 circle in the x1-x2 plane
-% data0 = shapeCylinder(grid,ignoreDims,center,radius)
-data0 = shapeSphere(g, [0; 0; 0], R);
+data0 = shapeCylinder(g,3,[0 0 0],R);
 % also try shapeRectangleByCorners, shapeSphere, etc.
 
 %% time vector
@@ -34,8 +32,8 @@ tau = t0:dt:tMax;
 % input bounds
 speed = 1; % v = 1, constant velocity
 wMax = 1;
-% do dStep1 here: define a dMax (dMax = [.25, .25, 0];)
-dMax = [.25, .25, 0];
+% do dStep1 here: define a dMax 
+dMax = [0, 0, 0];
 
 % control trying to min or max value function?
 uMode = 'min'; % goal is to stay within the circle
@@ -91,11 +89,11 @@ HJIextraArgs.visualize.xTitle = 'x';
 HJIextraArgs.visualize.yTitle = 'y';
 HJIextraArgs.visualize.zTitle = 'V';
 
-HJIextraArgs.makeVideo = 1;
+%HJIextraArgs.makeVideo = 1;
 
 %[data, tau, extraOuts] = ...
 % HJIPDE_solve(data0, tau, schemeData, minWith, extraArgs)
-minWith = 'minVOverTime';
+minWith = 'maxVOverTime'; %computeMethod
 [data, tau2, ~] = ...
   HJIPDE_solve(data0, tau, schemeData, minWith, HJIextraArgs);
 
@@ -103,7 +101,7 @@ minWith = 'minVOverTime';
 if compTraj
   
   %set the initial state
-  xinit = [0, 0, 0];
+  xinit = [0, 1, 0];
   
   %check if this initial state is in the BRS/BRT
   %value = eval_u(g, data, x)
