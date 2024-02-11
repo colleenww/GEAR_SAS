@@ -89,7 +89,7 @@ HJIextraArgs.visualize.xTitle = 'x';
 HJIextraArgs.visualize.yTitle = 'y';
 HJIextraArgs.visualize.zTitle = 'V';
 
-%HJIextraArgs.makeVideo = 1;
+HJIextraArgs.makeVideo = 1;
 
 %[data, tau, extraOuts] = ...
 % HJIPDE_solve(data0, tau, schemeData, minWith, extraArgs)
@@ -123,6 +123,8 @@ if compTraj
     %flip data time points so we start from the beginning of time
     dataTraj = flip(data,4);
     
+    TrajextraArgs.makeVideo = 1;
+
     % [traj, traj_tau] = ...
     % computeOptTraj(g, data, tau, dynSys, extraArgs)
     [traj, traj_tau] = ...
