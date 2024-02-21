@@ -42,15 +42,17 @@ grid on; title('Numerical Solution given u(t) = sin(t)');
 
 %% Problem 4
 syms x
-ode = @(t,x) [cos(x(3)); sin(x(3)); sat(k(x), -1, 1)]; % u(t) = k(x)
+ode = @(t,x) [cos(x(3)); sin(x(3)); u]; % u(t) = k(x)
+% if diff(ode) <= 0
+%     u = -1;
+%     else if diff(ode) > 0
+%         u = 1;
+%     end
+% end
+
 x0 = [0; 0; 0]; % initial position & heading angle
 [t_num, x_num] = ode45(ode, tspan, x0);
 
 figure(4)
 plot(x_num(:,1), x_num(:,2), '-b', 'LineWidth', 2);
 grid on;
-
-% saturation function
-function y = sat(x, lower, upper)
-    y = min(max(x, lower), upper);
-end
