@@ -56,3 +56,12 @@ x0 = [0; 0; 0]; % initial position & heading angle
 figure(4)
 plot(x_num(:,1), x_num(:,2), '-b', 'LineWidth', 2);
 grid on;
+
+%% Problem 3
+sym n
+t = -10:100:10
+xt = cos(4*pi*t)^2;
+
+figure(1);
+subplot(2,2,1)
+plot(t, xt)
