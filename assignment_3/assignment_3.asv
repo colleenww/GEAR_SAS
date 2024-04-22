@@ -50,7 +50,7 @@ schemeData.clf.gamma = gamma;
 % 3: l(x) = x'Qx
 
 % cost = shapeRectangleByCorners(g, [0;0;0], [0;0;0]);
-cost = shapeCylinder(g, [], [0; 0; 0], 0)-2.2; 
+cost = shapeCylinder(g, [], [0; 0; 0], 0); 
 
 % Q = [ 1,0,0;0,1,0;0,0,0];
 % cost = QuadCost(g,Q)-1.25;
@@ -60,19 +60,19 @@ data0 = cost;
 [V_0,tau1] = ComputeHJ(data0,cost,tau,schemeData);
 c = min(V_0,[],'all');
 
-V_1 = 0;
-save('V_gamma=0_fine.mat','V_1')
-save('g_fine.mat','g')
+
+% save('V_gamma=0_fine.mat','V_1')
+% save('g_fine.mat','g')
 %% Compute CLVF with gamma \neq 0
 % The cost function l(x) = data0 - c
 % but we can warm start with IC = V_0 - c 
 
+% data0_2 = data0-2;
+% [V_2,tau2] = ComputeHJ(data0_2,tau,schemeData);
+% % save('V_gamma=03_fine.mat','V_2')
+
 data0_2 = data0 - c;
-[V_0,tau2] = ComputeHJ(data0_2,cost,tau,schemeData);
-
-V_2 = 0;
-save('V_gamma=03_fine.mat','V_2')
-
+[V_0,tau2] = ComputeHJ(data0_2, cost, tau, schemeData);
 %%
 function [data,tau] = ComputeHJ(data0,cost,tau0,schemeData)
 % data0: initial value function
